@@ -3,14 +3,13 @@ package com.cmb.XiaoCHelper.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cmb.XiaoCHelper.utils.XiaoCHelperUtil;
 import com.cmb.XiaoCHelper.utils.HttpClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 public class IndexController {
     private static String url="http://99.15.215.14:8080/url";
 
@@ -27,8 +26,9 @@ public class IndexController {
         map.put("userage", "25");
         return map;
     }
-    @RequestMapping("/text")
-    public JSONObject TextController(@RequestParam("text") String text){
+    @RequestMapping(path = {"/text"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public JSONObject TextController( String text){
         Map<String,String> map = new HashMap<String,String>();
         map.put("text", text);
         //直接发送text
