@@ -1,4 +1,4 @@
-package com.cmb.XiaoCHelper.util;
+package com.cmb.XiaoCHelper.utils;
 import com.alibaba.fastjson.JSONObject;
 public class XiaoCHelperUtil {
     public static String getJSONString(String code, String msg,Object result) {
