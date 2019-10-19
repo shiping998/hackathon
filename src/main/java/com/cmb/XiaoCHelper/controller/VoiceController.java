@@ -7,10 +7,7 @@ import com.cmb.XiaoCHelper.utils.HttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -24,12 +21,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 public class VoiceController {
 
     @RequestMapping("/uploadVoice")
     public Rtn singleVoiceUpload(@RequestParam("file") MultipartFile file) {
         Rtn rtn = new Rtn();
-
         if (file.isEmpty()) {
             rtn.setRtn_cod("500");
             rtn.setRtn_msg("Voice File is Empty,Check!");

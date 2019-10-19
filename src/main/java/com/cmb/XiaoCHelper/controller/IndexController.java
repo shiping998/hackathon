@@ -1,6 +1,7 @@
 package com.cmb.XiaoCHelper.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cmb.XiaoCHelper.model.Rtn;
 import com.cmb.XiaoCHelper.utils.XiaoCHelperUtil;
 import com.cmb.XiaoCHelper.utils.HttpClient;
 import org.springframework.web.bind.annotation.*;
@@ -27,16 +28,25 @@ public class IndexController {
         return map;
     }
     @RequestMapping(path = {"/text"}, method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
-    public JSONObject TextController( String text){
+    public Rtn TextController(@RequestBody JSONObject jsonParam){
+        String text=jsonParam.get("text").toString();
+        Rtn rtn = new Rtn();
         Map<String,String> map = new HashMap<String,String>();
         map.put("text", text);
         //直接发送text
         try{
             String result=HttpClient.sendJSONPostRequest(url,map);
-            return XiaoCHelperUtil.getJSONObject("0","success",result);
+            JSONObject jsonObject = JSONObject.parseObject(result);
+            result=jsonObject.toJSONString();
+            rtn.setRtn_cod("0");
+            rtn.setRtn_msg("success");
+            rtn.setResult(result);
+            return rtn;
         }catch (Exception e){
-            return XiaoCHelperUtil.getJSONObject("500","error",null);
+            rtn.setRtn_cod("500");
+            rtn.setRtn_msg("error");
+            rtn.setResult(null);
+            return rtn;
         }
     }
 }
