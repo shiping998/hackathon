@@ -49,7 +49,7 @@ public class VoiceController {
                 System.out.println(arr.get(0));
                 Map<String, String> map = new HashMap<>();
                 String text = (String)arr.get(0);
-                text = text.substring(0, 6);
+                text = text.substring(0, text.length()-1);
                 map.put("text", text);
 
                 rtn.setResult(map);
