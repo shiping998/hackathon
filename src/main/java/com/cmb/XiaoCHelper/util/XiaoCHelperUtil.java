@@ -8,4 +8,10 @@ public class XiaoCHelperUtil {
         json.put("result",result);
         return json.toJSONString();
     }
+
+    public static JSONObject getJSONObject(String st) {
+        JSONObject json = new JSONObject();
+        json.put("text", st);
+        return json;
+    }
 }
