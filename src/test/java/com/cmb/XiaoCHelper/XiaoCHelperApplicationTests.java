@@ -8,6 +8,7 @@ class XiaoCHelperApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
