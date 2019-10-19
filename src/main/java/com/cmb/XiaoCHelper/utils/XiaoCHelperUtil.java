@@ -9,9 +9,11 @@ public class XiaoCHelperUtil {
         return json.toJSONString();
     }
 
-    public static JSONObject getJSONObject(String st) {
+    public static JSONObject getJSONObject(String code, String msg,Object result) {
         JSONObject json = new JSONObject();
-        json.put("text", st);
+        json.put("code", code);
+        json.put("msg", msg);
+        json.put("text", result);
         return json;
     }
 }
