@@ -38,7 +38,5 @@ public class IndexController {
         }catch (Exception e){
             return XiaoCHelperUtil.getJSONObject("500","error",null);
         }
-
-
     }
 }

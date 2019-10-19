@@ -26,7 +26,8 @@ public class unitTest {
     @Test
     public void voice(){
         AipSpeech client = SingleAipSpeech.getInstance();
-        String path = "C:\\计科学习\\JavaPrj\\xiaochelper\\zy-2901ms-16kbps-16000hz.wav";
+//        String path = "C:\\计科学习\\JavaPrj\\xiaochelper\\zy-2901ms-16kbps-16000hz.wav";
+        String path = "C:\\计科学习\\JavaPrj\\xiaochelper\\recodertest.pcm";
         // 调用接口
         JSONObject res = client.asr(path, "wav", 16000, null);
         System.out.println(res);
@@ -48,6 +49,7 @@ public class unitTest {
             String text = (String)arr.get(0);
             text = text.substring(0, 6);
 //            System.out.println(text);
+            text = "百度";
             map.put("text", text);
             String s = HttpClient.sendJSONPostRequest("http://99.15.215.14:8080/url", map);
             System.out.println(s);
