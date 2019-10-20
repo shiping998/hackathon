@@ -37,7 +37,7 @@ public class IndexController {
         try{
             String result=HttpClient.sendJSONPostRequest(url,map);
             JSONObject jsonObject = JSONObject.parseObject(result);
-            rtn.setRtn_cod("0");
+            rtn.setRtn_cod("200");
             rtn.setRtn_msg("success");
             rtn.setResult(jsonObject);
             return rtn;
