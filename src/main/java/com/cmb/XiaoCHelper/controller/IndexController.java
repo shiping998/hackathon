@@ -30,6 +30,7 @@ public class IndexController {
     @RequestMapping(path = {"/text"}, method = {RequestMethod.GET, RequestMethod.POST})
     public Rtn TextController(@RequestBody JSONObject jsonParam){
         String text=jsonParam.get("text").toString();
+        System.out.println("前端传来文字："+text);
         Rtn rtn = new Rtn();
         Map<String,String> map = new HashMap<String,String>();
         map.put("text", text);
@@ -37,6 +38,7 @@ public class IndexController {
         try{
             String result=HttpClient.sendJSONPostRequest(url,map);
             JSONObject jsonObject = JSONObject.parseObject(result);
+            System.out.println("数据端返回："+jsonObject);
             rtn.setRtn_cod("200");
             rtn.setRtn_msg("success");
             rtn.setResult(jsonObject);
