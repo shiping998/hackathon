@@ -44,6 +44,7 @@ public class IndexController {
             rtn.setResult(jsonObject);
             return rtn;
         }catch (Exception e){
+            e.printStackTrace();
             rtn.setRtn_cod("500");
             rtn.setRtn_msg("error");
             rtn.setResult(null);
